@@ -7,10 +7,11 @@ class PostsController < ApplicationController
   # end
 
   def create
-    Post.create(content: params[:content])
+    post = Post.create(content: params[:content], checked: false)
     # モデル名.create(保存したいカラム名:(つまりキー) 保存する値(つまりバリュー))
     # 「content」という名前の箱でへデータを送り保存する
-    redirect_to action: :index
+    # redirect_to action: :index
+    render json:{post: post}
   end
 
   def checked
